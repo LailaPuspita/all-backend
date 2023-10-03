@@ -16,7 +16,7 @@ const cors = require("cors");
 const port = process.env.PORT || 4000;
 
 app.use(logger);
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,15 +24,6 @@ app.get("/member", memberRoute);
 app.get("/doctor", doctorRoute);
 app.get("/appointment", appointmentRoute);
 app.post("/appointment", appointmentRoute);
-
-const corsOptions = {
-  origin: "https://frontend-domain.com", // Gantilah dengan domain frontend Anda
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
 
 // // Routes
 // const apiRouter = express.Router();
